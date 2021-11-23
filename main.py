@@ -18,7 +18,7 @@ def extarct_the_extension(url):
 
 def download_images(image_url, image_name):
     print('Сохраняем картинку по ссылке {}'.format(image_url))
-    filename = image_name.join(extarct_the_extension(image_url))
+    filename = f'{image_name}{extarct_the_extension(image_url)}'
     response = requests.get(image_url)
     if response.ok:
         with open(os.path.join(IMAGES_DIR, filename), 'wb') as file:
@@ -53,17 +53,22 @@ def fetch_hubble_image(image_id):
         download_images(images[-1], 'hubble_' + str(image_id))
 
 
-def fetch_nasa_apod():
-    nasa_apod_url = 'https://api.nasa.gov/planetary/apod?api_key={}'.format(API_KEY_NASA)
-    response = requests.get(nasa_apod_url)
+def fetch_nasa_apod(count):
+    nasa_apod_url = 'https://api.nasa.gov/planetary/apod'
+    params = {
+        'api_key': API_KEY_NASA,
+        'count': count,
+    }
+    response = requests.get(nasa_apod_url, params=params)
     if response.ok:
-        data = response.json()
-        download_images(data['url'], 'nasa_apod_{}'.format(data['date']))
+        nasa_apod_images = response.json()
+        for data in nasa_apod_images:
+            download_images(data['hdurl'], 'nasa_apod_{}'.format(data['date']))
 
 
 if __name__ == '__main__':
     # download_images('https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg', 'habble')
-    fetch_spacex_last_launch()
-    # fetch_nasa_apod()
-    # url = 'https://api.nasa.gov/EPIC/archive/natural/2021/11/20/png/epic_1b_20211120184615.png?api_key=ZC2fq55TIon3SurTcjBSMpgkoJmH067riPaPTpod'
+    # fetch_spacex_last_launch()
+    fetch_nasa_apod(10)
+    # url = 'https://apod.nasa.gov/apod/image/1311/minotaur1_111913cook950.jpg'
     # print(extarct_the_extension(url))
