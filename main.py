@@ -2,26 +2,23 @@ import requests
 import os
 # from dotenv import load_dotenv
 # from instabot import Bot
-import random
-import glob
+# import random
+# import glob
 
 IMAGES_DIR = 'images'
+if not os.path.exists(IMAGES_DIR):
+    os.makedirs(IMAGES_DIR)
 
-
-def get_image_from_url(url, filename):
-    if not os.path.exists(IMAGES_DIR):
-        os.makedirs(IMAGES_DIR)
-    response = requests.get(url)
-    if response.ok:
-        with open(os.path.join(IMAGES_DIR, filename), 'wb') as file:
-            file.write(response.content)
 
 
 def download_images(image_url, image_name):
     print('Сохраняем картинку по ссылке {}'.format(image_url))
     filename = image_name + os.path.splitext(image_url.split('?')[0])[1]
-    get_image_from_url(image_url, filename)
-    print('Картинка сохранена')
+    response = requests.get(image_url)
+    if response.ok:
+        with open(os.path.join(IMAGES_DIR, filename), 'wb') as file:
+            file.write(response.content)
+        print('Картинка сохранена')
 
 
 def fetch_spacex_last_launch():
