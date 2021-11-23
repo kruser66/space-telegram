@@ -1,6 +1,7 @@
 import requests
 import os
 from random import randint
+from datetime import datetime
 # from dotenv import load_dotenv
 # from instabot import Bot
 # import random
@@ -66,9 +67,25 @@ def fetch_nasa_apod(count):
             download_images(data['hdurl'], 'nasa_apod_{}'.format(data['date']))
 
 
+def fetch_nasa_epic(count=5):
+    nasa_epic_url = 'https://api.nasa.gov/EPIC/api/natural'
+    params = {
+        'api_key': API_KEY_NASA,
+    }
+    response = requests.get(nasa_epic_url, params=params)
+    if response.ok:
+        nasa_epic_images = [(datetime.fromisoformat(x['date']), x['image']) for x in response.json()]
+        for date, image in nasa_epic_images:
+            image_url = 'https://api.nasa.gov/EPIC/archive/natural/{}/{}/{}/png/{}.png'.format(date.year, date.month, date.day, image)
+            response = requests.get(image_url, params=params)
+            if response.ok:
+                download_images(image_url, 'nasa_epic_{}'.format(date.strftime('%Y_%m_%d')))
+
+
+
 if __name__ == '__main__':
     # download_images('https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg', 'habble')
     # fetch_spacex_last_launch()
-    fetch_nasa_apod(10)
+    fetch_nasa_epic()
     # url = 'https://apod.nasa.gov/apod/image/1311/minotaur1_111913cook950.jpg'
     # print(extarct_the_extension(url))
