@@ -3,13 +3,15 @@ import os
 from random import randint
 from datetime import datetime
 from dotenv import load_dotenv
+from time import sleep
+import telegram
 
+load_dotenv()
 
 IMAGES_DIR = 'images'
-if not os.path.exists(IMAGES_DIR):
-    os.makedirs(IMAGES_DIR)
-load_dotenv()
 NASA_API_KEY = os.getenv('NASA_API_KEY')
+TOKEN = os.getenv('BOT_TOKEN')
+CHANNEL_ID = os.getenv('CHANNEL_ID')
 
 
 def extarct_the_extension(url):
@@ -17,6 +19,9 @@ def extarct_the_extension(url):
 
 
 def download_images(image_url, image_name):
+    if not os.path.exists(IMAGES_DIR):
+        os.makedirs(IMAGES_DIR)
+
     print('Сохраняем картинку по ссылке {}'.format(image_url.split('?')[0]))
     filename = f'{image_name}{extarct_the_extension(image_url)}'
     response = requests.get(image_url)
@@ -80,7 +85,14 @@ def fetch_nasa_epic(count=5):
 
 
 if __name__ == '__main__':
-    download_images('https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg', 'habble')
-    fetch_spacex_last_launch()
-    fetch_nasa_apod(10)
-    fetch_nasa_epic()
+    # варианты наполнения каталога images картинками
+    # fetch_spacex_last_launch()
+    # fetch_nasa_apod(10)
+    # fetch_nasa_epic(5)
+
+    bot = telegram.Bot(token=TOKEN)
+
+    images = os.listdir(IMAGES_DIR)
+    for image in images:
+        bot.send_document(chat_id=CHANNEL_ID, document=open('images/{}'.format(image), 'rb'))
+        sleep(10)
