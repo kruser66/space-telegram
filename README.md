@@ -1,9 +1,9 @@
-#Space Telegram#
+# Space Telegram#
 
-Use fetch_spacex и fetch_nasa for collect images of space.
-space_image_bot - for post images to your Telegram channel. Use DELAY for pause between posts.
+Use fetch_spacex.py и fetch_nasa.py for collect images of space.
+space_image_bot.py - for post images to your Telegram channel. Use DELAY for pause between posts.
 
-#How to install#
+# How to install#
 
 For use fetch_nasa.py get NASA_API_KEY here: https://api.nasa.gov/
 For posts images to Telegram your must make your Bon in @BotFather and get Token
@@ -13,17 +13,17 @@ Python3 should be already installed. Then use pip (or pip3, if there is a confli
 
 pip install -r requirements.txt
 
-#Project Goals#
+# Project Goals#
 The code is written for educational purposes on online-course for web-developers dvmn.org.
 
 ____
 
-#Космический Телеграм#
+# Космический Телеграм#
 
 Используйте fetch_spacex и fetch_nasa для сбора изображений космоса.
 space_image_bot - для постинга изображений в телеграм-канал. Автопостинг через DELAY секунд
 
-#Как установить#
+# Как установить#
 
 Для fetch_nasa получите NASA_API_KEY здесь: https://api.nasa.gov/
 Для постинга изображений вам понадобится создать свой бот в @BotFather и получить token
@@ -33,5 +33,5 @@ Python3 должен быть уже установлен. Затем испол
 
 pip install -r requirements.txt
 
-#Цель проекта#
+# Цель проекта
 Код написан в образовательных целях на онлайн-курсе для веб-разработчиков dvmn.org.
