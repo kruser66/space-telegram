@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Space Telegram#
-=======
 # Space Telegram
->>>>>>> 3143438163c14d61705e619c855731db8eecd894
 
 Use fetch_spacex.py и fetch_nasa.py for collect images of space.
 space_image_bot.py - for post images to your Telegram channel. Use DELAY for pause between posts.
@@ -37,10 +33,7 @@ Python3 должен быть уже установлен. Затем испол
 
 pip install -r requirements.txt
 
-<<<<<<< HEAD
+
 # Цель проекта
+
 Код написан в образовательных целях на онлайн-курсе для веб-разработчиков dvmn.org.
-=======
-# Цель проекта#
-Код написан в образовательных целях на онлайн-курсе для веб-разработчиков dvmn.org.
->>>>>>> 3143438163c14d61705e619c855731db8eecd894
