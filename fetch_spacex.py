@@ -22,10 +22,11 @@ def fetch_spacex_launch(launch):
 
     # загружаем картинки запуска
     if response.ok:
+        print('Загружаем изображения запуска номер: {}'.format(str(launch)))
         for image_number, image in enumerate(response.json()['links']['flickr_images']):
             download_images(image, 'spacex_'.join(str(image_number + 1)))
     else:
-        print('Нет данных о запуске номер {}'.format(str(launch)))
+        print('Нет данных о запуске номер: {}'.format(str(launch)))
 
 
 if __name__ == '__main__':
