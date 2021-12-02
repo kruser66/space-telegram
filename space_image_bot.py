@@ -4,10 +4,10 @@ from time import sleep
 import telegram
 
 IMAGES_DIR = 'images'
+DELAY = 30  # in seconds
 
 
 def push_images_to_telegram_channel(token, channel_id, delay):
-    
     bot = telegram.Bot(token=token)
 
     for image in os.listdir(IMAGES_DIR):
@@ -16,10 +16,13 @@ def push_images_to_telegram_channel(token, channel_id, delay):
         sleep(delay)
 
 
-if __name__ == '__main__':
+def main():
     load_dotenv()
-    TOKEN = os.getenv('BOT_TOKEN')
-    CHANNEL_ID = os.getenv('CHANNEL_ID')
-    DELAY = int(os.getenv('DELAY'))
+    token = os.getenv('BOT_TOKEN')
+    channel_id = os.getenv('CHANNEL_ID')
     while True:
-        push_images_to_telegram_channel(TOKEN, CHANNEL_ID, DELAY)
+        push_images_to_telegram_channel(token, channel_id, DELAY)
+
+
+if __name__ == '__main__':
+    main()
