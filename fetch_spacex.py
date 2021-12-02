@@ -1,8 +1,5 @@
 import requests
-from core import download_image
-
-
-IMAGES_DIR = 'images'
+from core import download_image, make_images_dir, IMAGES_DIR
 
 
 def fetch_spacex_last_launch():
@@ -27,5 +24,6 @@ def fetch_spacex_launch(launch):
 
 
 if __name__ == '__main__':
+    make_images_dir(IMAGES_DIR)
     fetch_spacex_last_launch()
     fetch_spacex_launch(33)
