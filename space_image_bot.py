@@ -13,7 +13,6 @@ def push_images_to_telegram_channel(token, channel_id, delay):
     for image in os.listdir(IMAGES_DIR):
         with open('images/{}'.format(image), 'rb') as f_image:
             bot.send_document(chat_id=channel_id, document=f_image)
-            print('Pushing image: {}'.format(image))
         sleep(delay)
 
 

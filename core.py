@@ -15,13 +15,11 @@ def make_images_dir(images_dir):
 
 
 def download_image(image_url, image_name, params={}):
-    print('Сохраняем картинку по ссылке {}'.format(image_url.split('?')[0]))
     filename = f'{image_name}{extarct_the_extension(image_url)}'
     response = requests.get(image_url, params=params)
     if response.ok:
         with open(os.path.join(IMAGES_DIR, filename), 'wb') as file:
             file.write(response.content)
-        print('Картинка сохранена')
 
 
 def main():
