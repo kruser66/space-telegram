@@ -15,6 +15,17 @@ Python3 должен быть уже установлен. Затем испол
 
 ```pip install -r requirements.txt```
 
+# Пример использования
+### Для сбора изображений
+
+```python fetch_nasa.py```
+или
+```python fetch_spacex.py```
+
+### Для рассылки изображений в Телеграмм-канал
+
+```python spaxe_image_bot.py```
+
 
 # Цель проекта
 
