@@ -9,7 +9,7 @@ def extarct_the_extension(url):
     return os.path.splitext(url.split('?')[0])[-1]
 
 
-def download_images(image_url, image_name):
+def download_image(image_url, image_name):
     os.makedirs(IMAGES_DIR, exist_ok=True)
 
     print('Сохраняем картинку по ссылке {}'.format(image_url.split('?')[0]))
@@ -23,4 +23,4 @@ def download_images(image_url, image_name):
 
 if __name__ == '__main__':
     url = 'https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg'
-    download_images(url, 'habble')
+    download_image(url, 'habble')
