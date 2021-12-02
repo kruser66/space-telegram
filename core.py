@@ -22,4 +22,5 @@ def download_images(image_url, image_name):
 
 
 if __name__ == '__main__':
-    download_images('https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg', 'habble')
+    url = 'https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg'
+    download_images(url, 'habble')
