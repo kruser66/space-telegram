@@ -1,12 +1,13 @@
 import requests
 import os
-
+from urllib.parse import unquote, urlsplit
 
 IMAGES_DIR = 'images'
 
 
 def extarct_the_extension(url):
-    return os.path.splitext(url.split('?')[0])[-1]
+    url = unquote(url)
+    return os.path.splitext(urlsplit(url).path)[-1]
 
 
 def download_image(image_url, image_name):
