@@ -11,8 +11,8 @@ def fetch_spacex_last_launch():
 
     # загружаем картинки запуска 
     if response.ok:
-        for image_number, image in enumerate(response.json()['links']['flickr_images']):
-            download_images(image, 'spacex_last_{}'.format(str(image_number + 1)))
+        for image_number, image in enumerate(response.json()['links']['flickr_images'], start=1):
+            download_images(image, 'spacex_last_{}'.format(str(image_number)))
     else:
         print('Нет данных о последнем запуске')
 
@@ -23,8 +23,8 @@ def fetch_spacex_launch(launch):
     # загружаем картинки запуска
     if response.ok:
         print('Загружаем изображения запуска номер: {}'.format(str(launch)))
-        for image_number, image in enumerate(response.json()['links']['flickr_images']):
-            download_images(image, 'spacex_'.join(str(image_number + 1)))
+        for image_number, image in enumerate(response.json()['links']['flickr_images'], start=1):
+            download_images(image, 'spacex_launch{}_{}'.format(str(launch), str(image_number)))
     else:
         print('Нет данных о запуске номер: {}'.format(str(launch)))
 
