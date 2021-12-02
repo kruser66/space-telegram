@@ -13,7 +13,6 @@ load_dotenv()
 NASA_API_KEY = os.getenv('NASA_API_KEY')
 
 
-# One of the most popular websites at NASA is the Astronomy Picture of the Day
 def fetch_nasa_apod(count=30):
     nasa_apod_url = 'https://api.nasa.gov/planetary/apod'
     params = {
@@ -27,7 +26,6 @@ def fetch_nasa_apod(count=30):
             download_images(data['url'], 'nasa_apod_{}'.format(data['date']))
 
 
-# The EPIC API provides information on the daily imagery collected by DSCOVR's Earth Polychromatic Imaging Camera (EPIC)
 def fetch_nasa_epic(count=5):
     nasa_epic_url = 'https://api.nasa.gov/EPIC/api/natural'
     params = {
