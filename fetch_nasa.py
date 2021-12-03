@@ -5,10 +5,10 @@ from dotenv import load_dotenv
 from core import download_image, IMAGES_DIR
 
 
-def fetch_nasa_apod(count=30):
+def fetch_nasa_apod(api_key, count=30):
     nasa_apod_url = 'https://api.nasa.gov/planetary/apod'
     params = {
-        'api_key': NASA_API_KEY,
+        'api_key': api_key,
         'count': count,
     }
     response = requests.get(nasa_apod_url, params=params)
@@ -18,10 +18,10 @@ def fetch_nasa_apod(count=30):
             download_image(data['url'], 'nasa_apod_{}'.format(data['date']))
 
 
-def fetch_nasa_epic(count=5):
+def fetch_nasa_epic(api_key, count=5):
     nasa_epic_url = 'https://api.nasa.gov/EPIC/api/natural'
     params = {
-        'api_key': NASA_API_KEY,
+        'api_key': api_key,
     }
     response = requests.get(nasa_epic_url, params=params)
     if response.ok:
@@ -34,7 +34,7 @@ def fetch_nasa_epic(count=5):
 
 if __name__ == '__main__':
     load_dotenv()
-    NASA_API_KEY = os.getenv('NASA_API_KEY')
+    nasa_api_key = os.getenv('NASA_API_KEY')
     os.makedirs(IMAGES_DIR, exist_ok=True)
-    fetch_nasa_apod()
-    fetch_nasa_epic()
+    fetch_nasa_apod(nasa_api_key)
+    fetch_nasa_epic(nasa_api_key)
