@@ -14,8 +14,8 @@ def fetch_spacex_last_launch():
 
 
 def fetch_spacex_launch(launch):
-    api_url = 'https://api.spacexdata.com/v3/launches/{}'
-    response = requests.get(api_url.format(str(launch)))
+    api_url = 'https://api.spacexdata.com/v3/launches/{}'.format(str(launch))
+    response = requests.get(api_url)
 
     if response.ok:
         json_data = response.json()['links']['flickr_images']
@@ -27,4 +27,4 @@ def fetch_spacex_launch(launch):
 if __name__ == '__main__':
     os.makedirs(IMAGES_DIR, exist_ok=True)
     fetch_spacex_last_launch()
-    fetch_spacex_launch(33)
+    fetch_spacex_launch(launch=33)
