@@ -31,7 +31,7 @@ python fetch_spacex.py
 ### Для рассылки изображений в Телеграмм-канал
 
 ```
-python spaxe_image_bot.py
+python spaсe_image_bot.py
 ```
 
 
