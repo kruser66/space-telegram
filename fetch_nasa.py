@@ -25,10 +25,11 @@ def fetch_nasa_epic(api_key, count=5):
     }
     response = requests.get(nasa_epic_url, params=params)
     if response.ok:
-        nasa_epic_images = [(datetime.fromisoformat(x['date']), x['image']) for x in response.json()]
-        for date, image in nasa_epic_images[:count]:
-            tepmplate_url = 'https://api.nasa.gov/EPIC/archive/natural/{}/{}/{}/png/{}.png'
-            image_url = tepmplate_url.format(date.year, date.month, date.day, image)
+        epic_images = [(url['date'], url['image']) for url in response.json()]
+        for date_url, image in epic_images[:count]:
+            date = datetime.fromisoformat(date_url)
+            str_url = 'https://api.nasa.gov/EPIC/archive/natural/{}/{}/{}/png/{}.png'
+            image_url = str_url.format(date.year, date.month, date.day, image)
             download_image(image_url, 'nasa_{}'.format(image), params)
 
 
