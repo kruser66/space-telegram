@@ -2,10 +2,7 @@ import requests
 import os
 from datetime import datetime
 from dotenv import load_dotenv
-from core import download_image, make_images_dir, IMAGES_DIR
-
-
-NASA_API_KEY = 'Your API_key'
+from core import download_image, IMAGES_DIR
 
 
 def fetch_nasa_apod(count=30):
@@ -38,6 +35,6 @@ def fetch_nasa_epic(count=5):
 if __name__ == '__main__':
     load_dotenv()
     NASA_API_KEY = os.getenv('NASA_API_KEY')
-    make_images_dir(IMAGES_DIR)
+    os.makedirs(IMAGES_DIR, exist_ok=True)
     fetch_nasa_apod()
     fetch_nasa_epic()

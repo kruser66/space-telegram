@@ -10,10 +10,6 @@ def extarct_the_extension(url):
     return os.path.splitext(urlsplit(url).path)[-1]
 
 
-def make_images_dir(images_dir):
-    os.makedirs(images_dir, exist_ok=True)
-
-
 def download_image(image_url, image_name, params={}):
     filename = f'{image_name}{extarct_the_extension(image_url)}'
     response = requests.get(image_url, params=params)
@@ -24,7 +20,7 @@ def download_image(image_url, image_name, params={}):
 
 def main():
     url = 'https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg'
-    make_images_dir(IMAGES_DIR)
+    os.makedirs(IMAGES_DIR, exist_ok=True)
     download_image(url, 'habble')
 
 
