@@ -13,18 +13,26 @@
 
 Python3 должен быть уже установлен. Затем используйте pip (или pip3, есть есть конфликт с Python2) для установки зависимостей:
 
-```pip install -r requirements.txt```
+```
+pip install -r requirements.txt
+```
 
 # Пример использования
 ### Для сбора изображений
 
-```python fetch_nasa.py```
+```
+python fetch_nasa.py
+```
 или
-```python fetch_spacex.py```
+```
+python fetch_spacex.py
+```
 
 ### Для рассылки изображений в Телеграмм-канал
 
-```python spaxe_image_bot.py```
+```
+python spaxe_image_bot.py
+```
 
 
 # Цель проекта
