@@ -4,7 +4,7 @@ from time import sleep
 import telegram
 
 IMAGES_DIR = 'images'
-DELAY = 30  # in seconds
+DELAY = 300  # in seconds
 
 
 def push_images_to_telegram_channel(token, channel_id, delay):
